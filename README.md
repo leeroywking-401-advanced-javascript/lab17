@@ -5,16 +5,12 @@
 ### Author: Student/Group Name
 
 ### Links and Resources
-* [submission PR](http://xyz.com)
-
-#### Documentation
-* [api docs](http://xyz.com) (API servers)
-* [jsdoc](http://xyz.com) (Server assignments)
-* [styleguide](http://xyz.com) (React assignments)
+* [submission PR](https://github.com/leeroywking-401-advanced-javascript/lab17/pull/1)
 
 ### Modules
-#### `modulename.js`
-##### Exported Values and Methods
+
+fs 
+net
 
 ###### `foo(thing) -> string`
 Usage Notes or examples
