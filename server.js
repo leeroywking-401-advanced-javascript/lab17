@@ -7,6 +7,8 @@ const server = net.createServer();
 
 server.listen(port, () => console.log(`Server up on ${port}`) );
 
+
+let allowedEvents = ['create','read','update','delete','error','attack'];
 let socketPool = {};
 
 server.on('connection', (socket) => {
@@ -20,9 +22,19 @@ server.on('connection', (socket) => {
 
 let dispatchEvent = (buffer) => {
   let text = buffer.toString().trim();
+  let [event, payload] = text.split(/\s+(.*)/)
+  if(allowedEvents.includes(event)){
+  let eventPayload = {event,payload}
   for (let socket in socketPool) {
-    socketPool[socket].write(`${event} ${text}`);
+    socketPool[socket].write(JSON.stringify(eventPayload)); //
   }
+}
+else{
+  console.log(`IGNORE ${event}`)
+  for (let socket in socketPool) {
+    socketPool[socket].write(JSON.stringify({message:'Invalid event blocked'})); //
+  }
+}
 };
 
 
